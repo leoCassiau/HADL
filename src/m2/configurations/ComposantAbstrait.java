@@ -1,11 +1,14 @@
 package m2.configurations;
 
-public abstract class ComposantAbstrait {
+import java.util.Observable;
+
+public abstract class ComposantAbstrait extends Observable {
 
 	protected String nom;
 	
-	public ComposantAbstrait(String nom) {
+	public ComposantAbstrait(Configuration c, String nom) {
 		this.nom = nom;
+		this.addObserver(c);
 	}
 
 	public String getNom() {

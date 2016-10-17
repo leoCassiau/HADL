@@ -1,15 +1,17 @@
 package m2.composants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import m2.configurations.ComposantAbstrait;
+import m2.configurations.Configuration;
 
 public class Composant extends ComposantAbstrait {
 
-	private List<InterfaceComposant> interfaces;
+	private List<InterfaceComposant> interfaces = new ArrayList<InterfaceComposant>();
 
-	public Composant(String nom) {
-		super(nom);
+	public Composant(Configuration c, String nom) {
+		super(c, nom);
 	}
 
 	public boolean add(InterfaceComposant e) {
