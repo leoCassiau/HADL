@@ -16,7 +16,7 @@ public class Configuration extends ComposantAbstrait implements Observer {
 		super(c, nom);
 	}
 
-	public void ajouterComposantAbstrait(ComposantAbstrait e) {
+	protected void ajouterComposantAbstrait(ComposantAbstrait e) {
 		elements.add(e);
 		e.addObserver(this);
 	}
