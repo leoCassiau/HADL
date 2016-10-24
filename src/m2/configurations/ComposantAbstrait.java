@@ -6,9 +6,8 @@ public abstract class ComposantAbstrait extends Observable {
 
 	protected String nom;
 	
-	public ComposantAbstrait(Configuration c, String nom) {
+	public ComposantAbstrait(String nom) {
 		this.nom = nom;
-		this.addObserver(c);
 	}
 
 	public String getNom() {
@@ -18,5 +17,6 @@ public abstract class ComposantAbstrait extends Observable {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
 }
 

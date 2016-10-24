@@ -4,8 +4,8 @@ import m2.connecteurs.Connecteur;
 
 public class Rpc extends Connecteur{
 
-	public Rpc(SimpleCs c, RoleCalledRpc r1, RoleCallerRpc r2) {
-		super(c, "RPC", r1, r2);
+	public Rpc(RoleCalledRpc r1, RoleCallerRpc r2) {
+		super( "RPC", r1, r2);
 	}
 
 }

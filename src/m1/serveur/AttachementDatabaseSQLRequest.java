@@ -5,8 +5,8 @@ import m2.outils.InterfaceException;
 
 public class AttachementDatabaseSQLRequest extends Attachement{
 
-	public AttachementDatabaseSQLRequest(ServeurDetails c, RoleCalledSQLRequest fournis, QueryInt requis) throws InterfaceException {
-		super(c, "AttachementDatabaseSQLRequest", fournis, requis);
+	public AttachementDatabaseSQLRequest(RoleCalledSQLRequest fournis, QueryInt requis) throws InterfaceException {
+		super( "AttachementDatabaseSQLRequest", fournis, requis);
 	}
 
 

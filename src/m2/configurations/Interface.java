@@ -1,13 +1,11 @@
 package m2.configurations;
 
-import m2.configurations.Configuration;
-
 public abstract class Interface extends ComposantAbstrait {
 
 	protected boolean fournis;
 
-	public Interface(Configuration c, String nom, boolean fournis) {
-		super(c, nom);
+	public Interface(String nom, boolean fournis) {
+		super(nom);
 		this.fournis = fournis;
 	}
 

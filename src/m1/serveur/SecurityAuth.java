@@ -4,8 +4,8 @@ import m2.composants.Port;
 
 public class SecurityAuth extends Port{
 
-	public SecurityAuth(ServeurDetails c) {
-		super(c, "SecurityAuth", false);
+	public SecurityAuth() {
+		super( "SecurityAuth", false);
 	}
 
 }

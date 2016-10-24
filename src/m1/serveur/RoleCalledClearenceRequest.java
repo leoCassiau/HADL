@@ -4,8 +4,8 @@ import m2.connecteurs.Role;
 
 public class RoleCalledClearenceRequest extends Role{
 
-	public RoleCalledClearenceRequest(ServeurDetails c) {
-		super(c, "RoleCalledClerenceRequest", true);
+	public RoleCalledClearenceRequest() {
+		super( "RoleCalledClerenceRequest", true);
 	}
 
 }

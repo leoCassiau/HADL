@@ -6,14 +6,13 @@ import java.util.Observable;
 import java.util.Observer;
 
 import m2.configurations.Configuration;
-import m2.connecteurs.Connecteur;
 
 public class Configuration extends ComposantAbstrait implements Observer {
 	
-	private List<ComposantAbstrait> elements = new ArrayList<ComposantAbstrait>();
+	protected List<ComposantAbstrait> elements = new ArrayList<ComposantAbstrait>();
 
-	public Configuration(Configuration c, String nom) {
-		super(c, nom);
+	public Configuration(String nom) {
+		super(nom);
 	}
 
 	protected void ajouterComposantAbstrait(ComposantAbstrait e) {
@@ -27,13 +26,13 @@ public class Configuration extends ComposantAbstrait implements Observer {
 	
 	public void supprimerComposantAbstrait(ComposantAbstrait e) {
 		elements.remove(e);
-		e.addObserver(this);
+		e.deleteObserver(this);
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {
-		if(o instanceof Connecteur) {
-			elements.remove(arg);
-		}
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
 	}
+
 }

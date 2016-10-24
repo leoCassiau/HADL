@@ -4,7 +4,7 @@ import m2.connecteurs.Role;
 
 public class RoleCallerRpc extends Role{
 
-	public RoleCallerRpc(SimpleCs c) {
-		super(c, "caller", false);
+	public RoleCallerRpc() {
+		super( "caller", false);
 	}
 }

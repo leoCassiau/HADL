@@ -5,8 +5,8 @@ import m2.outils.InterfaceException;
 
 public class AttachementSecurityQueryDatabase extends Attachement{
 
-	public AttachementSecurityQueryDatabase(ServeurDetails c, SecurityManagement fournis, RoleCallerSecurityQuery requis) throws InterfaceException {
-		super(c, "AttachementSecurityQueryDatabase", fournis, requis);
+	public AttachementSecurityQueryDatabase(SecurityManagement fournis, RoleCallerSecurityQuery requis) throws InterfaceException {
+		super( "AttachementSecurityQueryDatabase", fournis, requis);
 	}
 
 }

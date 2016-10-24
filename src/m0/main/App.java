@@ -4,71 +4,76 @@ import m1.serveur.*;
 import m1.serveur.SecurityManager;
 import m1.simplecs.*;
 import m1.binding.*;
+import m2.outils.InterfaceException;
 
 public class App {
 
 	public static void main(String[] args) {
 		
-		// Database
-		SecurityManagement sm = new SecurityManagement(c);
-		QueryInt qi = new QueryInt(c);
-		Database d = new Database(c,sm,qi);
-		
-		// SecurityManager
-		SecurityAuth sa = new SecurityAuth(c);
-		CQuery cq = new CQuery(c);
-		SecurityManager securitymanager = new SecurityManager(c, sa, cq);
-		
-		// ConnectionManager
-		ExternalSocket es = new ExternalSocket(c);
-		SecurityClock sc = new SecurityClock(c);
-		DbQuery dbq = new DbQuery(c);
-		ConnectionManager cm = new ConnectionManager(c, es, sc, dbq);
-		
-		// ClearenceRequest
-		RoleCallerClearenceRequest rcallercr = new RoleCallerClearenceRequest(c);
-		RoleCalledClearenceRequest rcalledcr = new RoleCalledClearenceRequest(c);
-		ClearenceRequest cr = new ClearenceRequest(c, rcalledcr, rcallercr);
-		AttachementSecurityManagerClearenceRequest asmcr = new AttachementSecurityManagerClearenceRequest(c, rcalledcr, sa);
-		AttachementClearenceRequestConnectionManager acrcm = new AttachementClearenceRequestConnectionManager(c, sc, rcallercr);
-		
-		// SQLRequest
-		RoleCallerSQLRequest rcallersr = new RoleCallerSQLRequest(c);
-		RoleCalledSQLRequest rcalledsr = new RoleCalledSQLRequest(c);
-		SQLRequest sr = new SQLRequest(c, rcalledsr, rcallersr);
-		AttachementSQLRequestConnectionManager asrcm = new AttachementSQLRequestConnectionManager(c, dbq, rcallersr);
-		AttachementDatabaseSQLRequest adsr = new AttachementDatabaseSQLRequest(c, rcalledsr, qi);
-		
-		// SecurityQuery
-		RoleCallerSecurityQuery rcallersq = new RoleCallerSecurityQuery(c);
-		RoleCalledSecurityQuery rcalledsq = new RoleCalledSecurityQuery(c);
-		SecurityQuery sq = new SecurityQuery(c, rcalledsq, rcallersq);
-		AttachementSecurityQueryDatabase asqd = new AttachementSecurityQueryDatabase(c, sm, rcallersq);
-		AttachementSecurityManagerSecurityQuery asmsq = new AttachementSecurityManagerSecurityQuery(c, rcalledsq, cq);
-
-		// ServerDetails
-		ReceiveRequestRequis rrr = new ReceiveRequestRequis(c);
-		ServeurDetails sd = new ServeurDetails(c,cm,sm,d,rrr,cr,sr,sq);
-		
-		// Server
-		ReceiveRequestFournis rrf = new ReceiveRequestFournis(c);
-		Serveur s = new Serveur(c, rrf);
-		BindingServeur bs = new BindingServeur(c, rrf, rrr);
-		
-		// Client
-		SendRequest srequest = new SendRequest(c);
-		Client cl = new Client(c, srequest);
-		
-		// RPC
-		RoleCalledRpc rcalledr = new RoleCalledRpc(c);
-		RoleCallerRpc rcallerr = new RoleCallerRpc(c);
-		Rpc rpc = new Rpc(c,rcalledr,rcallerr);
-		AttachementServeurRpc asr = new AttachementServeurRpc(c, rcalledr, rrr);
-		AttachementClientRpc acr = new AttachementClientRpc(c, srequest, rcallerr);
-		
-		// SimpleCS
-		SimpleCs simplecs = new SimpleCs(c, cl, rpc,  s, bs, sd, acr, asr);
-		
+		try{
+			// Database
+			SecurityManagement sm = new SecurityManagement();
+			QueryInt qi = new QueryInt();
+			Database d = new Database(sm,qi);
+			
+			// SecurityManager
+			SecurityAuth sa = new SecurityAuth();
+			CQuery cq = new CQuery();
+			SecurityManager securitymanager = new SecurityManager(sa, cq);
+			
+			// ConnectionManager
+			ExternalSocket es = new ExternalSocket();
+			SecurityClock sc = new SecurityClock();
+			DbQuery dbq = new DbQuery();
+			ConnectionManager cm = new ConnectionManager(es, sc, dbq);
+			
+			// ClearenceRequest
+			RoleCallerClearenceRequest rcallercr = new RoleCallerClearenceRequest();
+			RoleCalledClearenceRequest rcalledcr = new RoleCalledClearenceRequest();
+			ClearenceRequest cr = new ClearenceRequest(rcalledcr, rcallercr);
+			AttachementSecurityManagerClearenceRequest asmcr = new AttachementSecurityManagerClearenceRequest(rcalledcr, sa);
+			AttachementClearenceRequestConnectionManager acrcm = new AttachementClearenceRequestConnectionManager(sc, rcallercr);
+			
+			// SQLRequest
+			RoleCallerSQLRequest rcallersr = new RoleCallerSQLRequest();
+			RoleCalledSQLRequest rcalledsr = new RoleCalledSQLRequest();
+			SQLRequest sr = new SQLRequest(rcalledsr, rcallersr);
+			AttachementSQLRequestConnectionManager asrcm = new AttachementSQLRequestConnectionManager(dbq, rcallersr);
+			AttachementDatabaseSQLRequest adsr = new AttachementDatabaseSQLRequest(rcalledsr, qi);
+			
+			// SecurityQuery
+			RoleCallerSecurityQuery rcallersq = new RoleCallerSecurityQuery();
+			RoleCalledSecurityQuery rcalledsq = new RoleCalledSecurityQuery();
+			SecurityQuery sq = new SecurityQuery(rcalledsq, rcallersq);
+			AttachementSecurityQueryDatabase asqd = new AttachementSecurityQueryDatabase(sm, rcallersq);
+			AttachementSecurityManagerSecurityQuery asmsq = new AttachementSecurityManagerSecurityQuery(rcalledsq, cq);
+	
+			// ServerDetails
+			ReceiveRequestRequis rrr = new ReceiveRequestRequis();
+			ServeurDetails sd = new ServeurDetails(cm,securitymanager,d,rrr,cr,sr,sq, asmcr, acrcm, asrcm, adsr, asqd, asmsq);
+			
+			// Server
+			ReceiveRequestFournis rrf = new ReceiveRequestFournis();
+			Serveur s = new Serveur(rrf);
+			BindingServeur bs = new BindingServeur(rrf, rrr);
+			
+			// Client
+			SendRequest srequest = new SendRequest();
+			Client cl = new Client(srequest);
+			
+			// RPC
+			RoleCalledRpc rcalledr = new RoleCalledRpc();
+			RoleCallerRpc rcallerr = new RoleCallerRpc();
+			Rpc rpc = new Rpc(rcalledr,rcallerr);
+			AttachementServeurRpc asr = new AttachementServeurRpc(rcalledr, rrr);
+			AttachementClientRpc acr = new AttachementClientRpc(srequest, rcallerr);
+			
+			// SimpleCS
+			SimpleCs simplecs = new SimpleCs(cl, rpc, s, bs, sd, acr, asr);
+			
+		} catch(InterfaceException e) {
+			e.printStackTrace();
+		}
 		
 		
 	}

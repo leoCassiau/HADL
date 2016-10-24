@@ -5,8 +5,8 @@ import m2.outils.InterfaceException;
 
 public class AttachementSecurityManagerSecurityQuery extends Attachement{
 
-	public AttachementSecurityManagerSecurityQuery(ServeurDetails c, RoleCalledSecurityQuery fournis, CQuery requis) throws InterfaceException {
-		super(c, "AttachementSecurityManagerSecurityQuery", fournis, requis);
+	public AttachementSecurityManagerSecurityQuery(RoleCalledSecurityQuery fournis, CQuery requis) throws InterfaceException {
+		super( "AttachementSecurityManagerSecurityQuery", fournis, requis);
 	}
 
 

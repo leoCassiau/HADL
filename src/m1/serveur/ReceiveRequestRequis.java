@@ -4,8 +4,8 @@ import m2.composants.Port;
 
 public class ReceiveRequestRequis extends Port{
 
-	public ReceiveRequestRequis(ServeurDetails c) {
-		super(c, "ReceiveRequestRequis", false);
+	public ReceiveRequestRequis() {
+		super( "ReceiveRequestRequis", false);
 	}
 
 }

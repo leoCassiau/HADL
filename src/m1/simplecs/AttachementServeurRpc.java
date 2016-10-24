@@ -6,8 +6,8 @@ import m2.outils.InterfaceException;
 
 public class AttachementServeurRpc extends Attachement{
 
-	public AttachementServeurRpc(SimpleCs c, RoleCalledRpc fournis, ReceiveRequestRequis requis) throws InterfaceException {
-		super(c, "RoleToPort", fournis, requis);
+	public AttachementServeurRpc(RoleCalledRpc fournis, ReceiveRequestRequis requis) throws InterfaceException {
+		super( "RoleToPort", fournis, requis);
 	}
 
 }

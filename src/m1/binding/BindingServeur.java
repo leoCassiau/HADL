@@ -8,8 +8,8 @@ import m2.outils.InterfaceException;
 
 public class BindingServeur extends Binding{
 
-	public BindingServeur(Configuration c, ReceiveRequestFournis fournis, ReceiveRequestRequis requis) throws InterfaceException {
-		super(c, "BindingServeur", fournis, requis);
+	public BindingServeur(ReceiveRequestFournis fournis, ReceiveRequestRequis requis) throws InterfaceException {
+		super( "BindingServeur", fournis, requis);
 	}
 
 }

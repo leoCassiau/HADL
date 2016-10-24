@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import m2.configurations.ComposantAbstrait;
-import m2.configurations.Configuration;
 
 public class Composant extends ComposantAbstrait {
 
-	private List<InterfaceComposant> interfaces = new ArrayList<InterfaceComposant>();
+	protected List<InterfaceComposant> interfaces = new ArrayList<InterfaceComposant>();
 
-	public Composant(Configuration c, String nom) {
-		super(c, nom);
+	public Composant(String nom) {
+		super( nom);
 	}
 
 	public boolean add(InterfaceComposant e) {
@@ -20,6 +19,14 @@ public class Composant extends ComposantAbstrait {
 
 	public boolean remove(InterfaceComposant o) {
 		return interfaces.remove(o);
+	}
+
+	public int sizeInterfaces() {
+		return interfaces.size();
+	}
+	
+	public boolean contains(Object arg0) {
+		return interfaces.contains(arg0);
 	}
 
 	

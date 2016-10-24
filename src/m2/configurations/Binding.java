@@ -6,9 +6,9 @@ import m2.outils.InterfaceException;
 
 public class Binding extends Lien {
 
-	public Binding(Configuration c, String nom, Port fournis, Port requis)
+	public Binding(String nom, Port fournis, Port requis)
 			throws InterfaceException {
-		super(c, nom, fournis, requis);
+		super( nom, fournis, requis);
 	}
 
 	

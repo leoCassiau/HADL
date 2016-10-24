@@ -4,8 +4,8 @@ import m2.connecteurs.Connecteur;
 
 public class SecurityQuery extends Connecteur{
 
-	public SecurityQuery(ServeurDetails c, RoleCalledSecurityQuery r1, RoleCallerSecurityQuery r2) {
-		super(c, "SecurityQuery", r1, r2);
+	public SecurityQuery(RoleCalledSecurityQuery r1, RoleCallerSecurityQuery r2) {
+		super( "SecurityQuery", r1, r2);
 	}
 
 }

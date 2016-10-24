@@ -4,8 +4,8 @@ import m2.composants.Composant;
 
 public class Database extends Composant{
 
-	public Database(ServeurDetails c, SecurityManagement sm, QueryInt qi) {
-		super(c, "Database");
+	public Database(SecurityManagement sm, QueryInt qi) {
+		super( "Database");
 		this.add(sm);
 		this.add(qi);
 	}

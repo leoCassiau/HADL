@@ -4,8 +4,8 @@ import m2.connecteurs.Connecteur;
 
 public class SQLRequest extends Connecteur{
 
-	public SQLRequest(ServeurDetails c, RoleCalledSQLRequest r1, RoleCallerSQLRequest r2) {
-		super(c, "SQLRequest", r1, r2);
+	public SQLRequest(RoleCalledSQLRequest r1, RoleCallerSQLRequest r2) {
+		super( "SQLRequest", r1, r2);
 	}
 
 }

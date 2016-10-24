@@ -5,8 +5,8 @@ import m2.configurations.Interface;
 
 public class Role extends Interface {
 
-	public Role(Configuration c, String nom, boolean fournis) {
-		super(c, nom, fournis);
+	public Role(String nom, boolean fournis) {
+		super( nom, fournis);
 	}
 
 }

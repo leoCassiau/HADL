@@ -4,8 +4,8 @@ import m2.composants.Port;
 
 public class DbQuery extends Port{
 
-	public DbQuery(ServeurDetails c) {
-		super(c, "DbQuery", true);
+	public DbQuery() {
+		super( "DbQuery", true);
 
 	}
 

@@ -10,8 +10,8 @@ public class Service extends InterfaceComposant {
 	
 	private List<InterfaceComposant> accede = new ArrayList<InterfaceComposant>();
 
-	public Service(Configuration c, String nom, boolean fournis) {
-		super(c, nom, fournis);
+	public Service(String nom, boolean fournis) {
+		super( nom, fournis);
 	}
 	
 	public boolean add(InterfaceComposant e) throws InterfaceException {

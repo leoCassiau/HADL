@@ -4,8 +4,8 @@ import m2.connecteurs.Role;
 
 public class RoleCallerSQLRequest extends Role{
 
-	public RoleCallerSQLRequest(ServeurDetails c) {
-		super(c, "RoleCallerSQLRequest", false);
+	public RoleCallerSQLRequest() {
+		super( "RoleCallerSQLRequest", false);
 	}
 
 }
