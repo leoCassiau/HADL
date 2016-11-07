@@ -71,9 +71,15 @@ public class App {
 			// SimpleCS
 			SimpleCs simplecs = new SimpleCs(cl, rpc, s, bs, sd, acr, asr);
 			
+			
+			
+			
+			cl.requete("salut");
+			
 		} catch(InterfaceException e) {
 			e.printStackTrace();
 		}
+		
 		
 		
 	}

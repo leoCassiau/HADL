@@ -29,5 +29,10 @@ public class Composant extends ComposantAbstrait {
 		return interfaces.contains(arg0);
 	}
 
+	public List<InterfaceComposant> getInterfaces() {
+		return interfaces;
+	}
+
+	
 	
 }

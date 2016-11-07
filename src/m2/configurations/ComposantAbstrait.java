@@ -18,5 +18,11 @@ public abstract class ComposantAbstrait extends Observable {
 		this.nom = nom;
 	}
 	
+	@Override
+	public void notifyObservers(Object arg) {
+		this.setChanged();
+		super.notifyObservers(arg);		
+	}
+	
 }
 

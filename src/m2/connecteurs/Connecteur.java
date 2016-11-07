@@ -9,7 +9,12 @@ public class Connecteur extends ComposantAbstrait {
 
 	protected List<Glue> glues = new ArrayList<Glue>();
 	protected List<Role> roles = new ArrayList<Role>();
-	
+
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
 	public Connecteur( String nom, Role r1, Role r2) {
 		super(nom);
 		roles.add(r1);
@@ -35,9 +40,10 @@ public class Connecteur extends ComposantAbstrait {
 	public boolean remove(Glue o) {
 		return glues.remove(o);
 	}
-
 	
+	public boolean contains(Object o) {
+		return roles.contains(o);
+	}
 	
-
 	
 }

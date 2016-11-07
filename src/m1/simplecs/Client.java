@@ -12,6 +12,7 @@ public class Client extends Composant{
 	
 	public void requete(String msg) {
 		this.interfaces.get(0).notifyObservers(msg);
+		//this.notifyObservers(msg);
 	}
 
 }
