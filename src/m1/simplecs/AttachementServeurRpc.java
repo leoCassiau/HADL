@@ -1,12 +1,11 @@
 package m1.simplecs;
 
-import m1.serveur.ReceiveRequestRequis;
 import m2.configurations.Attachement;
 import m2.outils.InterfaceException;
 
 public class AttachementServeurRpc extends Attachement{
 
-	public AttachementServeurRpc(RoleCalledRpc fournis, ReceiveRequestRequis requis) throws InterfaceException {
+	public AttachementServeurRpc(ReceiveRequestFournis fournis, RoleCalledRpc requis)  throws InterfaceException {
 		super( "RoleToPort", fournis, requis);
 	}
 

@@ -8,8 +8,9 @@ import java.util.Observer;
 import m2.composants.Composant;
 import m2.configurations.Configuration;
 import m2.connecteurs.Connecteur;
+import m2.connecteurs.Role;
 
-public class Configuration extends ComposantAbstrait implements Observer {
+public abstract class Configuration extends ComposantAbstrait implements Observer {
 	
 	protected List<ComposantAbstrait> elements = new ArrayList<ComposantAbstrait>();
 
@@ -20,7 +21,7 @@ public class Configuration extends ComposantAbstrait implements Observer {
 	protected void ajouterComposantAbstrait(ComposantAbstrait e) {
 		elements.add(e);
 		e.addObserver(this);
-		
+
 		if(e instanceof Composant){
 			Composant comp = (Composant) e;
 			for(Interface p : comp.getInterfaces()){
@@ -44,40 +45,67 @@ public class Configuration extends ComposantAbstrait implements Observer {
 		e.deleteObserver(this);
 	}
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
-
-		/*
-		Requete req = (Requete) arg1;
-		if(req.contains(arg0)) { // Si la requête est déjà passé par ce composant.
-			return;
-		}
+	public ComposantAbstrait rechercheLien(ComposantAbstrait comp) {
 		
-		if(arg0 instanceof Composant) {
-			Composant comp = (Composant) arg0;
-			for(ComposantAbstrait e : this.elements) {
-				if(e instanceof Lien ) {
-					Lien l = (Lien) e;
-					if(comp.contains(l.getFournis())) {
-						l.getRequis().notifyObservers(arg1);
-					} 
-					else if(comp.contains(l.getRequis())) {
-						l.getFournis().notifyObservers(arg1);
+		for(ComposantAbstrait c : this.elements) {
+			if(c instanceof Lien) {
+				Lien l = (Lien) c;
+				if(l.getFournis().equals(comp)) {
+					return l.getRequis(); 
+					
+				} else if (l.getRequis().equals(comp)){
+					return l.getFournis();
+				}
+			}
+		}
+		return null;
+	}
+	
+	public ComposantAbstrait rechercheAttachement(ComposantAbstrait comp) {
+		
+		for(ComposantAbstrait c : this.elements) {
+			if(c instanceof Attachement) {
+				Attachement l = (Attachement) c;
+				if(l.getFournis().equals(comp)) {
+					return l.getRequis(); 
+					
+				} else if (l.getRequis().equals(comp)){
+					return l.getFournis();
+				}
+			}
+		}
+		return null;
+	}
+	
+	public ComposantAbstrait rechercheConnecteur(ComposantAbstrait comp) {
+		for(ComposantAbstrait c : this.elements) {
+			if(c instanceof Connecteur) {
+				Connecteur l = (Connecteur) c;
+				if(l.getRoles().contains(comp)) {
+					for(Role r : l.getRoles()) {
+						if(!r.equals(comp)) {
+							return r;
+						}
 					}
 				}
 			}
 		}
-		else if(arg0 instanceof Interface) {
-			for(ComposantAbstrait e : this.elements) {
-				if(e instanceof Composant) {
-					Composant c = (Composant) e;
-					if(c.contains(arg0)) {
-						c.notifyObservers(arg1);
-					}
+		return null;
+	}
+	
+	public ComposantAbstrait rechercheComposant(ComposantAbstrait comp) {
+		for(ComposantAbstrait c : this.elements) {
+			if(c instanceof Composant) {
+				Composant l = (Composant) c;
+				if(l.getInterfaces().contains(comp)) {
+					return l;
 				}
 			}
-		}*/
-		
+		}
+		return null;
 	}
 
+	@Override
+	public abstract void update(Observable o, Object arg);
+	
 }

@@ -48,15 +48,14 @@ public class App {
 			AttachementSecurityQueryDatabase asqd = new AttachementSecurityQueryDatabase(sm, rcallersq);
 			AttachementSecurityManagerSecurityQuery asmsq = new AttachementSecurityManagerSecurityQuery(rcalledsq, cq);
 	
-			// ServerDetails
+			// Server et ServerDetails
 			ReceiveRequestRequis rrr = new ReceiveRequestRequis();
-			ServeurDetails sd = new ServeurDetails(cm,securitymanager,d,rrr,cr,sr,sq, asmcr, acrcm, asrcm, adsr, asqd, asmsq);
-			
-			// Server
+			BindingServerDetails bsd = new BindingServerDetails(es, rrr);
 			ReceiveRequestFournis rrf = new ReceiveRequestFournis();
 			Serveur s = new Serveur(rrf);
 			BindingServeur bs = new BindingServeur(rrf, rrr);
-			
+			ServeurDetails sd = new ServeurDetails(cm,securitymanager,d,rrr,cr,sr,sq, asmcr, acrcm, asrcm, adsr, asqd, asmsq, bsd, bs);
+
 			// Client
 			SendRequest srequest = new SendRequest();
 			Client cl = new Client(srequest);
@@ -65,7 +64,7 @@ public class App {
 			RoleCalledRpc rcalledr = new RoleCalledRpc();
 			RoleCallerRpc rcallerr = new RoleCallerRpc();
 			Rpc rpc = new Rpc(rcalledr,rcallerr);
-			AttachementServeurRpc asr = new AttachementServeurRpc(rcalledr, rrr);
+			AttachementServeurRpc asr = new AttachementServeurRpc(rrf, rcalledr );
 			AttachementClientRpc acr = new AttachementClientRpc(srequest, rcallerr);
 			
 			// SimpleCS

@@ -5,7 +5,7 @@ import m2.connecteurs.Role;
 public class RoleCalledRpc extends Role{
 
 	public RoleCalledRpc() {
-		super( "called", true);
+		super( "called", false);
 	}
 
 }
